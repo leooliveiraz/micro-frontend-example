@@ -1,0 +1,5 @@
+{
+  "navbar": "navbar@http://localhost:3001/remoteEntry.js",
+  "map": "map@http://localhost:3002/remoteEntry.js",
+  "users": "users@http://localhost:3004/remoteEntry.js"
+}

@@ -1,0 +1,39 @@
+.map-menu{
+    background-color: blueviolet;
+    width: 2.5em;
+    height: 10em;
+    position: absolute; 
+    right: .5em;
+    top: 6em;
+    z-index: 1000;
+    border-radius: .3em;
+    padding-top: 1em;
+    text-align: center;
+}
+.map-menu .icon {
+    width: 1.8em;
+    height: 1.8em;
+}
+
+.sub-menu {
+    background-color: blueviolet;
+    color: white;
+    min-width: 10em;
+    min-height: 10em ;
+    position: absolute;
+    top: 6em;
+    z-index: 1000;
+    right: 5em;
+    border-radius: .3em;
+    padding: 0em;
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.sub-menu .title{
+    font-weight: bold;
+    font-size: large;
+    color: white;
+
+}
