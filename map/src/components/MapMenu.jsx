@@ -7,17 +7,13 @@ function MapMenu(props) {
   const [showMapChooser, setShowMapChooser] = useState(false);
   const [showMapPointer, setShowMapPointer] = useState(false);
 
-  useEffect(() => {
-    window.addEventListener(
-      "MSG",
-      (e) => {
-        console.log(e);
-      },
-      false
+  function openUsers() {
+    const popup = window.open(
+      "http://localhost:3006/",
+      "",
+      "width=660, height=510, top=100, left=699, scrollbars=yes, status=no, toolbar=no, location=no, menubar=no, resizable=no, fullscreen=no"
     );
-    console.log("adicionado listener")
-  }, []);
-
+  }
   return (
     <>
       <div className="map-menu">
@@ -32,6 +28,13 @@ function MapMenu(props) {
           className="icon"
           src="./pino-mapa.png"
           onClick={() => setShowMapPointer(!showMapPointer)}
+        ></img>
+        <img
+          className="icon"
+          src="./dashboard.png"
+          onClick={() => {
+            openUsers();
+          }}
         ></img>
       </div>
       {showMapChooser && <MapChooser />}

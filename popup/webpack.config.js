@@ -2,18 +2,9 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
 const deps = require("./package.json").dependencies;
-
-const remotes =
-  process.env.REACT_APP_NODE_ENV === "prod"
-    ? require("./remotes-prod.json")
-    : require("./remotes.json");
-
 module.exports = (_, argv) => ({
   output: {
-    publicPath:
-      process.env.REACT_APP_NODE_ENV === "prod"
-        ? "http://localhost:80/"
-        : "http://localhost:3000/",
+    publicPath: "http://localhost:3006/",
   },
 
   resolve: {
@@ -21,13 +12,13 @@ module.exports = (_, argv) => ({
   },
 
   devServer: {
-    port: 3000,
-    allowedHosts: ['all'],
+    port: 3006,
     historyApiFallback: true,
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization,Origin, X-Requested-With, Accept",
+      "Access-Control-Allow-Credentials": "true"
     }
   },
 
@@ -56,9 +47,9 @@ module.exports = (_, argv) => ({
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "main_container",
+      name: "popup",
       filename: "remoteEntry.js",
-      remotes: remotes,
+      remotes: {},
       exposes: {},
       shared: {
         ...deps,

@@ -22,11 +22,22 @@ function WorldMap(props) {
     setListMarker([...listMarker]);
   }
 
+  function ouvir(e){
+    if (e.origin.indexOf("3002") === -1) console.log(e);
+  }
+
   useEffect(() => {
+
     window.addEventListener("NEW_POINT", (e) => {
       const point = e.detail;
       createMarker(point.lat, point.lon);
     });
+
+    if (window.addEventListener) {
+      window.addEventListener("message", ouvir, false);
+    } else {
+      window.attachEvent("onmessage", ouvir);
+    }
   }, []);
 
   let icone = new Icon({
